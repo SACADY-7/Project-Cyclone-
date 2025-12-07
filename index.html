@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CYCLONE X : AURORA — Complete & Working</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{--ice:#e8f8ff;--a1:#00d4ff;--a2:#7fffd4;--a3:#b19cd9;--glass:rgba(255,255,255,0.13);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    margin:0;background:#0f172a;color:var(--ice);font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#0a1128,#1e293b);min-height:100vh;
+  }
+  /* Aurora background */
+  .aurora{
+    position:fixed;inset:0;z-index:-3;
+    background:
+      radial-gradient(circle at 20% 80%,rgba(0,212,255,0.35),transparent 50%),
+      radial-gradient(circle at 80% 20%,rgba(127,255,212,0.3),transparent 50%),
+      radial-gradient(circle at 50% 50%,rgba(177,156,217,0.25),transparent 60%);
+    animation:aurora 25s infinite alternate;
+  }
+  @keyframes aurora{0%{opacity:0.7}100%{opacity:1}}
+
+  /* Snow */
+  .snow{position:fixed;inset:0;pointer-events:none;z-index:-1;}
+  .flake{
+    position:absolute;background:#fff;border-radius:50%;opacity:0.9;
+    animation:fall linear infinite;
+  }
+  @keyframes fall{to{transform:translateY(120vh) rotate(720deg);}}
+
+  /* Hero */
+  .hero{
+    height:100vh;display:flex;flex-direction:column;justify-content:center;
+    align-items:center;text-align:center;padding:0 20px;
+  }
+  .hero h1{
+    font-family:'Playfair Display',serif;font-size:10vw;
+    background:linear-gradient(90deg,var(--a1),#fff,var(--a2));
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    text-shadow:0 0 60px rgba(0,212,255,0.5);
+  }
+  .hero p{font-size:1.8rem;margin-top:20px;}
+
+  section{padding:160px 20px;}
+  .container{max-width:1300px;margin:0 auto;text-align:center;}
+  h2{
+    font-family:'Playfair Display',serif;font-size:5.5rem;margin-bottom:80px;color:var(--ice);
+  }
+
+  /* Glass cards */
+  .glass{
+    background:var(--glass);backdrop-filter:blur(22px);border-radius:28px;
+    padding:35px;border:1px solid rgba(255,255,255,0.25);
+    box-shadow:0 25px 50px rgba(0,0,0,0.4);transition:0.7s;position:relative;
+  }
+  .glass::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:6px;
+    background:linear-gradient(90deg,var(--a1),var(--a3));
+  }
+  .glass:hover{transform:translateY(-18px);box-shadow:0 50px 100px rgba(0,212,255,0.35);}
+
+  .grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px;
+  }
+  .fact-card h3{
+    background:linear-gradient(90deg,var(--a1),#fff);-webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;font-size:1.6rem;margin-bottom:12px;
+  }
+
+  .scale{display:flex;flex-wrap:wrap;justify-content:center;gap:30px;margin:60px 0;}
+  .cat{width:200px;padding:30px;border-radius:25px;color:white;font-weight:bold;}
+  .c1{background:#00ccff;}.c2{background:#0099ff;}.c3{background:#ffcc00;}
+  .c4{background:#ff6600;}.c5{background:#ff0066;animation:pulse 3s infinite;}
+  @keyframes pulse{50%{transform:scale(1.1)}}
+
+  footer{padding:120px 20px;text-align:center;background:linear-gradient(to top,#0a1128,transparent);}
+</style>
+</head>
+<body>
+
+<div class="aurora"></div>
+<div class="snow" id="snow"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>CYCLONE X</h1>
+  <p>A U R O R A</p>
+  <p style="margin-top:40px;font-size:1.8rem;">Complete & Beautiful Cyclone Experience</p>
+</section>
+
+<!-- FORMATION -->
+<section>
+  <div class="container">
+    <h2>How Cyclones Form</h2>
+    <div class="grid">
+      <div class="glass">1. Warm ocean water ≥26.5°C</div>
+      <div class="glass">2. Low wind shear</div>
+      <div class="glass">3. Moist air rises → thunderstorms</div>
+      <div class="glass">4. Coriolis effect starts spin</div>
+      <div class="glass">5. Eye forms</div>
+      <div class="glass">6. Rapid intensification</div>
+    </div>
+  </div>
+</section>
+
+<!-- SCALE -->
+<section style="background:rgba(15,23,42,0.6);">
+  <div class="container">
+    <h2>Saffir-Simpson Scale</h2>
+    <div class="scale">
+      <div class="cat c1">Cat 1<br>119–153 km/h</div>
+      <div class="cat c2">Cat 2<br>154–177 km/h</div>
+      <div class="cat c3">Cat 3<br>178–208 km/h</div>
+      <div class="cat c4">Cat 4<br>209–251 km/h</div>
+      <div class="cat c5">Cat 5<br>≥252 km/h</div>
+    </div>
+  </div>
+</section>
+
+<!-- FACTS -->
+<section>
+  <div class="container">
+    <h2>30+ Mind-Blowing Facts</h2>
+    <div class="grid">
+      <div class="glass fact-card"><h3>The Eye</h3>Perfectly calm even in 300+ km/h winds</div>
+      <div class="glass fact-card"><h3>Typhoon Tip</h3>2,220 km wide — larger than India</div>
+      <div class="glass fact-card"><h3>408 km/h Gust</h3>Fastest ever recorded</div>
+      <div class="glass fact-card"><h3>31 Days</h3>Hurricane John lasted a month</div>
+      <div class="glass fact-card"><h3>10,000 Bombs/Day</h3>Energy released</div>
+      <div class="glass fact-card"><h3>13m Surge</h3>Taller than a 4-story building</div>
+      <div class="glass fact-card"><h3>Earth’s AC</h3>Redistributes tropical heat</div>
+      <div class="glass fact-card"><h3>NASA Uses Them</h3>To study alien planets</div>
+      <div class="glass fact-card"><h3>2020 Greek Letters</h3>Ran out of names</div>
+      <div class="glass fact-card"><h3>Smallest Cyclone</h3>Only 37 km wide</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>CYCLONE X : AURORA — Fully Working • December 2025</p>
+</footer>
+
+<script>
+// Snowflakes
+for(let i=0;i<150;i++){
+  const f=document.createElement('div');
+  f.className='flake';
+  f.style.left=Math.random()*100+'vw';
+  f.style.animationDuration=10+Math.random()*15+'s';
+  f.style.animationDelay=Math.random()*10+'s';
+  f.style.width=f.style.height=(Math.random()*6+3)+'px';
+  document.getElementById('snow').appendChild(f);
+}
+</script>
+</body>
+</html>
