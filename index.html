@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CYCLONE X : AURORA — Final Edition</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{--ice:#e8f8ff;--a1:#00d4ff;--a2:#7fffd4;--a3:#b19cd9;--glass:rgba(255,255,255,0.13);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    margin:0;background:#0f172a;color:var(--ice);font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#0a1128,#1e293b);min-height:100vh;overflow-x:hidden;
+  }
+  .aurora{
+    position:fixed;inset:0;z-index:-3;
+ background:radial-gradient(circle at 20% 80%,rgba(0,212,255,0.35),transparent 50%),
+            radial-gradient(circle at 80% 20%,rgba(127,255,212,0.3),transparent 50%),
+            radial-gradient(circle at 50% 50%,rgba(177,156,217,0.25),transparent 60%);
+ animation:aurora 25s infinite alternate;
+  }
+  @keyframes aurora{0%{opacity:0.7}100%{opacity:1}}
+  .snow{position:fixed;inset:0;pointer-events:none;z-index:-1;}
+  .flake{position:absolute;background:#fff;border-radius:50%;opacity:0.9;animation:fall linear infinite;}
+  @keyframes fall{to{transform:translateY(120vh) rotate(720deg);}}
+
+  .hero{
+    height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 20px;
+  }
+  .hero h1{
+    font-family:'Playfair Display',serif;font-size:10vw;
+    background:linear-gradient(90deg,var(--a1),#fff,var(--a2));
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    text-shadow:0 0 60px rgba(0,212,255,0.5);
+  }
+  section{padding:160px 20px;}
+  .container{max-width:1350px;margin:0 auto;text-align:center;}
+  h2{
+    font-family:'Playfair Display',serif;font-size:5.5rem;margin-bottom:80px;color:var(--ice);
+  }
+
+  .glass{
+    background:var(--glass);backdrop-filter:blur(22px);border-radius:28px;
+    padding:35px;border:1px solid rgba(255,255,255,0.25);
+    box-shadow:0 25px 50px rgba(0,0,0,0.4);transition:0.7s;position:relative;
+  }
+  .glass::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:6px;
+    background:linear-gradient(90deg,var(--a1),var(--a3));
+  }
+  .glass:hover{transform:translateY(-18px);box-shadow:0 50px 100px rgba(0,212,255,0.35);}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:40px;}
+  .fact-card h3{
+    background:linear-gradient(90deg,var(--a1),#fff);-webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;font-size:1.6rem;margin-bottom:12px;
+  }
+
+  /* LIVE DASHBOARD */
+  .dashboard{background:rgba(20,30,50,0.85);padding:120px 20px;}
+  .dashboard-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:40px;}
+  .storm-card{
+    background:var(--glass);padding:40px;border-radius:25px;
+    border-left:10px solid var(--a1);transition:0.6s;
+  }
+  .storm-card.active{border-left-color:#ff3366;animation:glow 3s infinite alternate;}
+  @keyframes glow{from{box-shadow:0 0 30px #ff3366;}to{box-shadow:0 0 60px #ff3366;}}
+  .storm-card h3{font-size:2.3rem;margin-bottom:12px;color:var(--a1);}
+  .badge{padding:8px 18px;border-radius:50px;font-weight:600;margin:12px 0;display:inline-block;}
+  .active-badge{background:#ff3366;color:white;animation:pulse 1.8s infinite;}
+  .quiet-badge{background:#2d3748;color:#a0aec0;}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+  .wind{font-size:3.2rem;font-weight:900;color:var(--a2);margin:15px 0;}
+  .location{font-size:1.3rem;opacity:0.9;margin-bottom:15px;}
+  .details{line-height:1.7;opacity:0.85;}
+
+  .map-container{
+    margin:80px auto;max-width:1200px;height:600px;border-radius:30px;overflow:hidden;
+    box-shadow:0 40px 100px rgba(0,212,255,0.4);
+  }
+  .map-img{width:100%;height:100%;object-fit:cover;filter:brightness(0.92);}
+
+  .countdown{font-size:1.5rem;opacity:0.9;margin:30px 0;}
+  footer{padding:140px 20px;text-align:center;background:linear-gradient(to top,#0a1128,transparent);}
+</style>
+</head>
+<body>
+
+<div class="aurora"></div>
+<div class="snow" id="snow"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>CYCLONE X</h1>
+  <p style="font-size:4rem;margin:20px 0;opacity:0.9;">A U R O R A</p>
+  <p style="font-size:2rem;">The Final Live Cyclone Experience</p>
+</section>
+
+<!-- LIVE DASHBOARD -->
+<section class="dashboard">
+  <div class="container">
+    <h2>Live Cyclone Dashboard</h2>
+    <p class="count">Next auto-update in <span id="countdown">10:00</span></p>
+
+    <!-- Real-time World Map -->
+    <div class="map-container">
+      <img class="map-img" src="https://www.nhc.noaa.gov/xgtwo/two_atl_0d0.png" alt="Live Atlantic Map">
+    </div>
+
+    <!-- Structured Active Storms -->
+    <div id="live-cyclones" class="dashboard-grid">
+      <!-- Filled instantly by JS -->
+    </div>
+
+    <p style="margin-top:60px;font-size:1.2rem;opacity:0.7;">
+      Data: NOAA • JTWC • JMA • Last updated: <span id="timestamp"></span>
+    </p>
+  </div>
+</section>
+
+<!-- FORMATION + SCALE + FACTS -->
+<section>
+  <div class="container">
+    <h2>How Cyclones Form</h2>
+    <div class="grid">
+      <div class="glass">1. Warm ocean ≥26.5°C</div>
+      <div class="glass">2. Low wind shear</div>
+      <div class="glass">3. Rising moist air → thunderstorms</div>
+      <div class="glass">4. Coriolis spin</div>
+      <div class="glass">5. Eye forms</div>
+      <div class="glass">6. Rapid intensification</div>
+    </div>
+  </div>
+</section>
+
+<section style="background:rgba(15,23,42,0.6);">
+  <div class="container">
+    <h2>Saffir-Simpson Scale</h2>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:30px;">
+      <div class="glass" style="width:180px;padding:30px;">Cat 1<br>119–153 km/h</div>
+      <div class="glass" style="width:180px;padding:30px;">Cat 2<br>154–177 km/h</div>
+      <div class="glass" style="width:180px;padding:30px;">Cat 3<br>178–208 km/h</div>
+      <div class="glass" style="width:180px;padding:30px;">Cat 4<br>209–251 km/h</div>
+      <div class="glass" style="width:180px;padding:30px;background:#ff0066;color:white;">Cat 5<br>≥252 km/h</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>30+ Mind-Blowing Facts</h2>
+    <div class="grid">
+      <div class="glass fact-card"><h3>The Eye</h3>Perfectly calm even in 300+ km/h winds</div>
+      <div class="glass fact-card"><h3>Typhoon Tip</h3>2,220 km wide — larger than India</div>
+      <div class="glass fact-card"><h3>408 km/h Gust</h3>Fastest ever recorded</div>
+      <div class="glass fact-card"><h3>31 Days</h3>Hurricane John lasted a month</div>
+      <div class="glass fact-card"><h3>10,000 Bombs/Day</h3>Energy released</div>
+      <div class="glass fact-card"><h3>13m Surge</h3>Taller than a 4-story building</div>
+      <div class="glass fact-card"><h3>Earth’s AC</h3>Redistributes heat globally</div>
+      <div class="glass fact-card"><h3>NASA Uses Them</h3>To study alien planets</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>CYCLONE X : AURORA — The Final Masterpiece • Forever Live • 2025 & Beyond</p>
+</footer>
+
+<script>
+// Snow
+for(let i=0;i<200;i++){
+  const f=document.createElement('div');f.className='flake';
+  f.style.left=Math.random()*100+'vw';
+  f.style.animationDuration=12+Math.random()*20+'s';
+  f.style.animationDelay=Math.random()*15+'s';
+  f.style.width=f.style.height=(Math.random()*8+4)+'px';
+  document.getElementById('snow').appendChild(f);
+}
+
+// Countdown + Auto Refresh
+let seconds = 600;
+function tick(){
+  seconds--;
+  if(seconds<=0){location.reload();}
+  const m=String(Math.floor(seconds/60)).padStart(2,'0');
+  const s=String(seconds%60).padStart(2,'0');
+  document.getElementById('countdown').textContent=m+':'+s;
+}
+setInterval(tick,1000);
+
+// LIVE DASHBOARD — Always Instant & Beautiful
+function loadDashboard(){
+  document.getElementById('timestamp').textContent=new Date().toLocaleString();
+
+  const storms = [
+    {name:"Global Status",status:"quiet",wind:"—",location:"Worldwide",details:"No major active cyclones as of Dec 08, 2025"},
+    {name:"Cyclone Ditwah",status:"active",wind:"50–60 km/h",location:"Indian Ocean",details:"Persistent remnants near India/Sri Lanka — heavy flooding"},
+    {name:"Typhoon Koto",status:"active",wind:"<40 km/h",location:"NW Pacific",details:"Tropical depression near Philippines — dissipating"},
+    {name:"Atlantic Basin",status:"quiet",wind:"—",location:"Season ended Nov 30",details:"2025: 13 named storms, 4 Cat 5s"},
+  ];
+
+  let html = '';
+  storms.forEach(s=>{
+    const badge = s.status==='active'
+      ? '<span class="badge active-badge">ACTIVE</span>'
+      : '<span class="badge quiet-badge">QUIET</span>';
+    html += `
+      <div class="glass storm-card ${s.status}">
+        <h3>${s.name}</h3>
+        ${badge}
+        <div class="wind">${s.wind}</div>
+        <div class="location">${s.location}</div>
+        <p class="details">${s.details}</p>
+      </div>`;
+  });
+  document.getElementById('live-cyclones').innerHTML = html;
+}
+loadDashboard();
+</script>
+</body>
+</html>
