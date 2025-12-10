@@ -54,11 +54,22 @@
   @keyframes pulse{50%{transform:scale(1.05)}}
 
   .recent-section{background:rgba(15,23,42,0.8);padding:90px 20px;}
-  .recent-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px;}
-  .recent-card{background:var(--glass);padding:32px;border-radius:22px;text-align:left;}
-  .recent-card h3{font-size:1.8rem;color:var(--a1);margin-bottom:8px;}
-  .year{font-size:1.4rem;font-weight:900;color:var(--a2);margin:8px 0;}
-  .details{line-height:1.7;opacity:0.9;margin-top:8px;font-size:0.95rem;}
+  .recent-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:35px;}
+  .recent-card{background:var(--glass);padding:35px;border-radius:22px;display:flex;flex-direction:column;height:100%;}
+  .recent-card h3{font-size:1.9rem;color:var(--a1);margin-bottom:8px;text-align:center;}
+  .year{font-size:1.5rem;font-weight:900;color:var(--a2);margin:10px 0;text-align:center;}
+  .details{line-height:1.7;opacity:0.9;margin:15px 0 20px 0;font-size:1rem;flex-grow:1;}
+  .map-img{
+    width:100%;
+    max-width:500px;
+    height:280px;
+    object-fit:cover;
+    border-radius:15px;
+    margin:0 auto 15px auto;
+    display:block;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    border:2px solid var(--a1);
+  }
 
   footer{padding:100px 20px;text-align:center;background:linear-gradient(to top,#0a1128,transparent);}
 </style>
@@ -145,7 +156,7 @@
         <h3>Hurricane Erin</h3>
         <div class="year">Aug 2025</div>
         <p class="details">Origination: Cape Verde wave. Intensity: Category 5 (260 km/h). Magnitude: 910 hPa. Areas Affected: Lesser Antilles, Mexico. Causes: Record warm SSTs, low shear. Impacts: $2B damage, 50 deaths, 3m surge.</p>
-        <img src="ErenH" alt="Erin Path Map" class="map-img">
+        <img src="ErenH.jpeg" alt="Erin Path Map" class="map-img">
       </div>
       <div class="recent-card">
         <h3>Hurricane Gabrielle</h3>
