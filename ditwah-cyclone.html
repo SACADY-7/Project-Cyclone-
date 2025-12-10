@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyclone Ditwah 2025 — CYCLONE X : AURORA</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{--ice:#e8f8ff;--a1:#00d4ff;--a2:#7ff4;--a3:#b19cd9;--glass:rgba(255,255,255,0.13);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#0f172a;color:var(--ice);font-family:'Poppins',sans-serif;overflow-x:hidden;
+       background:linear-gradient(135deg,#0a1128,#1e293b);min-height:100vh;}
+  .aurora{position:fixed;inset:0;z-index:-3;background:radial-gradient(circle at 20% 80%,rgba(0,212,255,0.4),transparent 50%),radial-gradient(circle at 80% 20%,rgba(127,255,212,0.35),transparent 50%),radial-gradient(circle at 50% 50%,rgba(177,156,217,0.3),transparent 60%);animation:aurora 25s infinite alternate;}
+  @keyframes aurora{0%{opacity:0.8}100%{opacity:1}}
+  .snow{position:fixed;inset:0;pointer-events:none;z-index:-1;}
+  .flake{position:absolute;background:#fff;border-radius:50%;opacity:0.9;animation:fall linear infinite;}
+  @keyframes fall{to{transform:translateY(120vh) rotate(720deg);}}
+
+  .hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 20px;position:relative;}
+  .hero h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,10vw,7rem);background:linear-gradient(90deg,#ff3366,#ff00ff,#00ffff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 80px rgba(255,51,102,0.6);}
+  .back{background:rgba(255,255,255,0.1);backdrop-filter:blur(15px);padding:15px 30px;border-radius:30px;margin-top:30px;font-size:1.5rem;border:2px solid #ff3366;}
+
+  .container{max-width:1200px;margin:0 auto;padding:0 20px;}
+  section{padding:100px 0;}
+  h2{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,4.5rem);margin-bottom:50px;color:var(--ice);text-align:center;}
+
+  .glass{background:var(--glass);backdrop-filter:blur(22px);border-radius:25px;padding:40px;
+         border:2px solid rgba(255,51,102,0.4);box-shadow:0 25px 60px rgba(0,0,0,0.5);margin:30px auto;max-width:1000px;}
+  .glass h3{font-size:2.2rem;color:#ff3366;margin-bottom:20px;text-align:center;}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin:30px 0;}
+  .stat{background:rgba(255,51,102,0.2);padding:20px;border-radius:15px;text-align:center;}
+  .stat strong{font-size:2rem;color:#ff3366;display:block;margin-bottom:8px;}
+
+  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px;margin:50px 0;}
+  .img-card{background:var(--glass);border-radius:20px;overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,0.4);}
+  .img-card img{width:100%;height:300px;object-fit:cover;transition:0.5s;}
+  .img-card img:hover{transform:scale(1.08);}
+
+  .back-btn{position:fixed;top:20px;left:20px;background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);border:2px solid var(--a1);color:white;padding:12px 25px;border-radius:30px;cursor:pointer;z-index:1000;transition:0.4s;}
+  .back-btn:hover{background:var(--a1);color:#000;}
+</style>
+</head>
+<body>
+
+<div class="aurora"></div>
+<div class="snow" id="snow"></div>
+
+<a href="index.html" class="back-btn">Back to Main</a>
+
+<section class="hero">
+  <h1>CYCLONE DITWAH</h1>
+  <div class="back">North Indian Ocean • December 2025</div>
+</section>
+
+<div class="container">
+  <section>
+    <div class="glass">
+      <h3>Cyclone Ditwah — The Silent Destroyer</h3>
+      <div class="stats">
+        <div class="stat"><strong>Cat 4</strong>Peak Intensity</div>
+        <div class="stat"><strong>240 km/h</strong>Max Winds</div>
+        <div class="stat"><strong>918 hPa</strong>Lowest Pressure</div>
+        <div class="stat"><strong>611+</strong>Deaths</div>
+        <div class="stat"><strong>$3.8B</strong>Damage</div>
+        <div class="stat"><strong>Dec 4–9</strong>2025</div>
+      </div>
+      <p style="font-size:1.3rem;line-height:2;text-align:center;margin-top:30px;">
+        Cyclone Ditwah was a powerful and deadly Category 4 cyclone that struck Sri Lanka and southern India in early December 2025.<br>
+        It caused catastrophic flooding, landslides, and over 600 deaths — making it one of the deadliest cyclones of the decade.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Impact & Damage Gallery</h2>
+    <div class="gallery">
+      <div class="img-card"><img src="https://www.hindustantimes.com/world-news/cyclone-ditwah-death-toll-in-sri-lanka-indonesia-hit-1-300-rain-lashes-tamil-nadu-top-points-101764756642758.html" alt="Ditwah Satellite View"></div>
+      <div class="img-card"><img src="https://m.economictimes.com/news/india/cyclone-ditwah-closes-in-towards-tamil-nadu-coast-cm-stalin-reviews-preparedness/articleshow/125643209.cms" alt="Flooding in Colombo"></div>
+      <div class="img-card"><img src="https://news.un.org/en/story/2025/11/1166474" alt="Landslide in Kandy"></div>
+      <div class="img-card"><img src="https://www.patrika.com/en/education-news/cyclone-ditwah-ditwah-storm-brews-in-bay-of-bengal-know-its-meaning-and-who-names-it-20139387" alt="Rescue Operations"></div>
+      <div class="img-card"><img src="https://www.outlookindia.com/international/sri-lanka-cyclone-ditwah-kills-over-480-caused-severe-nationwide-damage" alt="Storm Surge Damage"></div>
+      <div class="img-card"><img src="https://vannihope.org/cyclone-ditwah-emergency-appeal" alt="Aftermath in Tamil Nadu"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+// Snow effect
+for(let i=0;i<150;i++){
+  const f=document.createElement('div');f.className='flake';
+  f.style.left=Math.random()*100+'vw';
+  f.style.animationDuration=10+Math.random()*20+'s';
+  f.style.animationDelay=Math.random()*15+'s';
+  f.style.width=f.style.height=(Math.random()*8+4)+'px';
+  document.getElementById('snow').appendChild(f);
+}
+</script>
+</body>
+</html>
